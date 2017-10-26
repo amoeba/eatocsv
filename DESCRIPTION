@@ -1,0 +1,16 @@
+Package: eatocsv
+Type: Package
+Title: Download and extract Entity-Attribute metadata into a CSV
+Version: 0.1.0
+Author: Bryce Mecum <mecum@nceas.ucsb.ed>
+Maintainer: Bryce Mecum <mecum@nceas.ucsb.ed>
+Description: Downloads and extracts Entity-Attribute metadata from EML documents stored in a DataONE Member Node
+License: Apache License 2.0
+Encoding: UTF-8
+LazyData: true
+Imports:
+  dataone,
+  future,
+  magrittr,
+  stringr
+RoxygenNote: 6.0.1
