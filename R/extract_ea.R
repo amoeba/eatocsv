@@ -13,7 +13,7 @@ ea_to_csv <- function (paths,
   result <- lapply(paths, function(doc) {
     pkg_id <- xml2::xml_find_first(doc, "/eml:eml/@packageId") %>%
       xml2::xml_text()
-    cat(paste0("Extracting attributes from ", pkg_id, ".\n"))
+    message(paste0("Extracting attributes from ", pkg_id, ".\n"))
 
     entities <- lapply(
       xml2::xml_find_all(doc, "//otherEntity | //dataTable"),
