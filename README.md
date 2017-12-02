@@ -4,11 +4,9 @@ Download and extract Entity-Attribute metadata into a CSV
 
 This package is a micro-package that can be used to download (optionally in parallel) Objects from a DataONE CN or MN, extract Entity-Attribute metadata and export it into a CSV with the structure:
 
-| pid | entity | attribute | query_time |
-| --- | ------ | --------- | -----------|
-| X | MyEntity | SomeAttribute | 20171028T00:00:00Z |
-| X | MyEntity | AnotherAttribute | 20171028T00:00:00Z |
-| X | MyEntity | NiceAttribute | 20171028T00:00:00Z |
+| pid | entity | attributeName | attributeLabel | attributeDefinition | unit | query_time |
+| -- | -- | -- | -- | -- | -- | -- |
+| X | MyEntity | SomeAttribute | SomeLabel | SomeDef | SomeUnit | 20171028T00:00:00Z |
 
 It's designed to be used for work on [arctic-semantics](https://github.com/DataONEorg/arctic-semantics) and requires some knowledge of what's going on there and how the [dataone](https://github.com/DataONEorg/rdataone) package works.
 
