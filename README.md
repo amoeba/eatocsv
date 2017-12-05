@@ -45,6 +45,8 @@ download_objects(CN, documents$identifier)
 #' Step 3:
 #' Parse and extract entities and their attributes
 document_paths <- list.files(getwd(), full.names = TRUE, pattern = "*.xml")
-attributes <- eatocsv::ea_to_csv(document_paths)
-write_csv(attributes, file.path(getwd(), paste0(format(query_datetime, "%Y%m%d%H%M%S"), "_attributes.csv")))
+attributes <- extract_ea(document_paths)
+write_csv(attributes, 
+file.path(getwd(), 
+          paste0(format(query_datetime, "%Y%m%d%H%M%S"), "_attributes.csv")))
 ```
