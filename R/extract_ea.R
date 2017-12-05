@@ -8,7 +8,7 @@
 #'
 #' @importFrom magrittr "%>%"
 #' @export
-ea_to_csv <- function (paths,
+extract_ea <- function (paths,
                        datetime = Sys.time()) {
   result <- lapply(paths, function(path) {
     doc <- xml2::read_xml(path)
