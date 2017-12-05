@@ -72,5 +72,3 @@ extract_ea <- function (paths,
 
   attributes
 }
-
-
