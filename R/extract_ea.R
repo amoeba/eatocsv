@@ -72,3 +72,19 @@ extract_ea <- function (paths,
 
   attributes
 }
+
+
+#' Extract Entity-Attribute information from a set of EML records
+#'
+#' @param paths (character) Paths to one or more EML records to read from
+#' @param datetime (optional) Optional. Specify a query time to save with the
+#'     resulting CSV
+#'
+#' @return (data.frame) A data.frame of Entity-Attribute information
+#'
+#' @importFrom magrittr "%>%"
+#' @export
+ea_to_csv <- function(paths,
+                       datetime = Sys.time()) {
+  .Deprecated("extract_ea")
+}
