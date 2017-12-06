@@ -35,7 +35,7 @@ download_objects <- function(node,
   result <- list()
 
   # Create a future for each download job
-  for(i in seq_along(pids)) {
+  for (i in seq_along(pids)) {
     pid <- pids[i]
     outpath <- paste0(filenames[i], ext)
 
