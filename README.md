@@ -10,6 +10,14 @@ This package is a micro-package that can be used to download (optionally in para
 
 It's designed to be used for work on [arctic-semantics](https://github.com/DataONEorg/arctic-semantics) and requires some knowledge of what's going on there and how the [dataone](https://github.com/DataONEorg/rdataone) package works.
 
+## Installation
+
+```{r}
+remotes::install_github("amoeba/eatocsv")
+```
+
+Note: You will need to install the `remotes` package first in order to run the above line of code.
+
 ## Usage
 
 Here's an example of how to use the package to extract Entity-Attribute metadata into a CSV from EML records on the  [Arctic Data Center](https://arcticdata.io).
