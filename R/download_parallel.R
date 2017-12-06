@@ -80,7 +80,7 @@ download_objects <- function(node,
   # Try to resolve every future and finish when all are resolved
   repeat {
     result <- watch(result)
-    if (!any(vapply(result, FUN = inherits, "Future", TRUE))) break
+    if (!any(vapply(result, function(x) inherits(x, "Future"), TRUE))) break
   }
 
   result
