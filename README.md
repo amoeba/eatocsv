@@ -12,7 +12,7 @@ It's designed to be used for work on [arctic-semantics](https://github.com/DataO
 
 ## Installation
 
-```{r}
+```r
 remotes::install_github("amoeba/eatocsv")
 ```
 
