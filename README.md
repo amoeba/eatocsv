@@ -35,7 +35,7 @@ query_url <- paste0(arcticdata.io@baseURL,
                     "&wt=csv")
 
 query_datetime <- Sys.time() # Save querytime for later
-documents <- readr::read_csv(query_url);
+documents <- readr::read_csv(query_url)
 
 #' Step 2:
 #' Download in parallel using the future package
