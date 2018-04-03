@@ -8,8 +8,7 @@
 #'
 #' @importFrom magrittr "%>%"
 #' @export
-extract_ea <- function (paths,
-                       datetime = Sys.time()) {
+extract_ea <- function(paths, datetime = Sys.time()) {
   result <- lapply(paths, function(path) {
     doc <- xml2::read_xml(path)
 
@@ -24,7 +23,7 @@ extract_ea <- function (paths,
           xml2::xml_text()
 
         attributes <- lapply(xml2::xml_find_all(entity, ".//attribute"),
-                             function (attribute) {
+                             function(attribute) {
                                attribute_name <- xml2::xml_find_first(attribute, "./attributeName") %>%
                                  xml2::xml_text()
                                attribute_labels <- xml2::xml_find_all(attribute, "./attributeLabel") %>%
