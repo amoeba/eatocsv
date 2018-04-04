@@ -48,7 +48,8 @@ extract_ea <- function(paths, datetime = Sys.time()) {
       do.call(rbind, attributes)
     })
 
-    entities <- entities[which(!is.na(entities))]
+    # Clean up NULL/NA results
+    entities <- entities[which(!is.na(entities)) & which(is.null(entities))]
 
     if (length(entities) == 0) {
       warning(paste0("No entities with attributes found for ", pkg_id, "."))
@@ -61,9 +62,8 @@ extract_ea <- function(paths, datetime = Sys.time()) {
   attributes <- do.call(rbind, result)
 
   if (nrow(attributes) == 0) {
-    warning(paste0("No entities with attributes were found in any of the ", length(paths), " document(s) parsed. This could be a bug in the function or it could be that none of the documents have entity-attribute metadata."))
+    stop(call. = FALSE, paste0("No entities with attributes were found in any of the ", length(paths), " document(s) parsed. This could be a bug in the function or it could be that none of the documents have entity-attribute metadata."))
   }
-
   attributes$query_datetime_utc <- datetime # Append query time in utc
 
   attributes
