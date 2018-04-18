@@ -49,7 +49,7 @@ extract_ea <- function(paths, datetime = Sys.time()) {
     })
 
     # Clean up NULL/NA results
-    entities <- entities[which(!is.na(entities)) & which(is.null(entities))]
+    entities <- entities[which(!is.null(entities))]
 
     if (length(entities) == 0) {
       warning(paste0("No entities with attributes found for ", pkg_id, "."))
