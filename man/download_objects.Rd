@@ -4,8 +4,7 @@
 \alias{download_objects}
 \title{Download objects from an MN, optionally in parallel}
 \usage{
-download_objects(node, pids, path = getwd(), ext = ".xml",
-  overwrite = FALSE)
+download_objects(node, pids, path = getwd(), ext = ".xml", overwrite = FALSE)
 }
 \arguments{
 \item{node}{(CNode|MNode) The Node to download from}
