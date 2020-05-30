@@ -12,16 +12,18 @@ extract_ea <- function(paths, datetime = Sys.time()) {
   result <- lapply(paths, function(path) {
     doc <- xml2::read_xml(path)
 
-    pkg_id <- xml2::xml_find_first(doc, "/eml:eml/@packageId") %>%
-      xml2::xml_text()
+    identifier <- rawToChar(
+      openssl::base64_decode(
+        strsplit(basename(path), ".xml")[[1]][1]))
 
-    message(paste0("Extracting attributes from ", pkg_id))
+    message(paste0("Extracting attributes from ", identifier))
 
     entities <- lapply(xml2::xml_find_all(doc, "//otherEntity | //dataTable"), function(entity) {
       entity_name <- xml2::xml_find_first(entity, ".//entityName") %>%
         xml2::xml_text()
 
       attributes <- lapply(xml2::xml_find_all(entity, ".//attribute"), function(attribute) {
+
         attribute_name <- xml2::xml_find_first(attribute, "./attributeName") %>%
           xml2::xml_text()
         attribute_labels <- xml2::xml_find_all(attribute, "./attributeLabel") %>%
@@ -37,12 +39,13 @@ extract_ea <- function(paths, datetime = Sys.time()) {
         attribute_unit <- ifelse(nchar(attribute_unit) == 0, NA, attribute_unit)
 
         # Return the result as a data.frame with all the info
-        data.frame(packageId = pkg_id,
+        data.frame(identifier = identifier,
                    entityName = entity_name,
                    attributeName = attribute_name,
                    attributeLabel = attribute_labels,
                    attributeDefinition = attribute_def,
-                   attributeUnit = attribute_unit)
+                   attributeUnit = attribute_unit,
+                   viewURL = paste0("https://search.dataone.org/view/", identifier))
       })
 
       do.call(rbind, attributes)
@@ -52,7 +55,7 @@ extract_ea <- function(paths, datetime = Sys.time()) {
     entities <- entities[which(!vapply(entities, is.null, FALSE))]
 
     if (length(entities) == 0) {
-      warning(paste0("No entities with attributes found for ", pkg_id, "."))
+      warning(paste0("No entities with attributes found for ", identifier, "."))
       return(data.frame())
     }
 

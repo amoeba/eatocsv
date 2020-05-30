@@ -7,7 +7,7 @@
 #' @return (character) The sanitized filenames
 #' @export
 sanitize_filename <- function(filenames) {
-  stringr::str_replace_all(filenames, "[^A-Za-z0-9]", "_")
+  vapply(filenames, openssl::base64_encode, "")
 }
 
 #' Download objects from an MN, optionally in parallel

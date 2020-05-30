@@ -12,5 +12,6 @@ Imports:
   dataone,
   future,
   magrittr,
+  openssl,
   stringr
 RoxygenNote: 6.0.1
