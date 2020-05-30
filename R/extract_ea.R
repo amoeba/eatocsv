@@ -18,7 +18,7 @@ extract_ea <- function(paths, datetime = Sys.time()) {
 
     message(paste0("Extracting attributes from ", identifier))
 
-    entities <- lapply(xml2::xml_find_all(doc, "//otherEntity | //dataTable"), function(entity) {
+    entities <- lapply(xml2::xml_find_all(doc, "//otherEntity | //dataTable | //spatialVector | // spatialRaster | //storedProcedure | //view"), function(entity) {
       entity_name <- xml2::xml_find_first(entity, ".//entityName") %>%
         xml2::xml_text()
 
