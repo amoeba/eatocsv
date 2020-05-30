@@ -3,5 +3,6 @@
 export(download_objects)
 export(ea_to_csv)
 export(extract_ea)
+export(extract_keywords)
 export(sanitize_filename)
 importFrom(magrittr,"%>%")
