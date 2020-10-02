@@ -48,9 +48,9 @@ extract_ea <- function(paths, datetime = Sys.time()) {
                    attributeName = attribute_name,
                    attributeLabel = attribute_labels,
                    attributeDefinition = attribute_def,
+                   attributeUnit = attribute_unit,
                    propertyURI = attribute_propertyURI,
                    valueURI = attribute_valueURI,
-                   attributeUnit = attribute_unit,
                    viewURL = paste0("https://search.dataone.org/view/", identifier))
       })
 
