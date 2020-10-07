@@ -33,6 +33,10 @@ extract_ea <- function(paths, datetime = Sys.time()) {
           xml2::xml_text()
         attribute_unit <- xml2::xml_find_first(attribute, ".//unit/standardUnit | .//unit/customUnit") %>%
           xml2::xml_text()
+        attribute_propertyURI <- xml2::xml_find_first(attribute, "./annotation/propertyURI") %>% # added by SC
+          xml2::xml_text()
+        attribute_valueURI <- xml2::xml_find_first(attribute, "./annotation/valueURI") %>% # added by SC
+          xml2::xml_text()
 
         # Clean up xml_find results
         attribute_labels <- ifelse(nchar(attribute_labels) == 0, NA_character_, attribute_labels)
@@ -45,6 +49,8 @@ extract_ea <- function(paths, datetime = Sys.time()) {
                    attributeLabel = attribute_labels,
                    attributeDefinition = attribute_def,
                    attributeUnit = attribute_unit,
+                   propertyURI = attribute_propertyURI,
+                   valueURI = attribute_valueURI,
                    viewURL = paste0("https://search.dataone.org/view/", identifier))
       })
 
